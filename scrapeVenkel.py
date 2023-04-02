@@ -1,17 +1,13 @@
-from os import listdir, path, makedirs
 from selenium import webdriver
 import pandas as pd
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
 options = Options()
 options.add_experimental_option('detach', True)
 options.add_experimental_option("excludeSwitches", ["enable-logging"])
-
-
-
-# options = webdriver.ChromeOptions() 
 
 browser = webdriver.Chrome(options=options)
 browser.get("https://www.venkel.com/")
@@ -27,8 +23,6 @@ _user_Password = "perekeme123"
 """
 
 excel_file = "Venkel Scraper - Input Sample.xlsx"
-# csv_file = "books.csv"
-# df_excel= pd.read_excel(excel_file, usecols=["Query"])
 df_excel = pd.read_excel(excel_file)
 df_excel_query = df_excel["Query"]
 # print(df_excel_query)
@@ -42,7 +36,6 @@ listt = df_excel_query.tolist()
 
 button_element = WebDriverWait(browser, 50).until(
     EC.presence_of_element_located((By.XPATH, '//*[@id="header"]/div[1]/div/div[2]/div[2]/div[1]/div/div/ul/li[5]/a')))
-
 
 _login = browser.find_element(
     By.XPATH, '//*[@id="header"]/div[1]/div/div[2]/div[2]/div[1]/div/div/ul/li[5]/a')
@@ -61,11 +54,6 @@ _input_email.send_keys(_user_Email)
 _input_password.send_keys(_user_Password)
 _login2.click()
 # debug print(_login2)
-
-# _input_search = browser.find_element(By.ID, 'search')
-# _search_btn= browser.find_element(By.XPATH,'//*[@id="search_mini_form"]/div[1]/button')
-# debug print(_search_btn)
-# _input_search.send_keys("htyftyfygu")
 
 get_url = browser.current_url
 # updated_url = get_url[:23]
