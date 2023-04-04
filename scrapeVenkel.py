@@ -23,9 +23,9 @@ _output_dir = "output"
 makedirs(_output_dir, exist_ok=True)
 
 # for brave
-brave_path = '/usr/bin/brave'
-options.binary_location = brave_path
-options.add_argument('--remote-debugging-port=9224')  # NOT 9222
+# brave_path = '/usr/bin/brave'
+# options.binary_location = brave_path
+# options.add_argument('--remote-debugging-port=9224')  # NOT 9222
 
 
 # hard coded by user
